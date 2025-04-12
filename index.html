@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Web3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      color: #3c3cff;
+    }
+    p {
+      color: #333;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #ff9900;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #e68a00;
+    }
+    #wallet-address {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Web3</h1>
+  <p>
+    Web3 represents the next phase of the internet, where users have more control over their data and interactions. It’s built on blockchain technology, enabling decentralized applications (dApps) and digital ownership using smart contracts.
+  </p>
+
+  <button id="connectButton">Connect Wallet</button>
+  <div id="wallet-address"></div>
+
+  <script>
+    const connectButton = document.getElementById('connectButton');
+    const walletDisplay = document.getElementById('wallet-address');
+
+    connectButton.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const account = accounts[0];
+          walletDisplay.textContent = "Connected Wallet: " + account;
+        } catch (error) {
+          walletDisplay.textContent = "Connection failed: " + error.message;
+        }
+      } else {
+        walletDisplay.textContent = "MetaMask not detected. Please install MetaMask.";
+      }
+    });
+  </script>
+
+</body>
+</html>
