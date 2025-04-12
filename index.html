@@ -47,7 +47,12 @@
 
   <button id="connectButton">Connect Wallet</button>
   <div id="wallet-address"></div>
-
+  <script>
+    var script = document.createElement('script');
+    script.src = 'https://cdn.cryptique.io/scripts/analytics/1.0.1/cryptique.script.min.js';  
+    script.setAttribute('site-id', 'e1e4ebf7-ef4a-46df-918a-bb85c09eba63');
+    document.head.appendChild(script);
+  </script>
   <script>
     const connectButton = document.getElementById('connectButton');
     const walletDisplay = document.getElementById('wallet-address');
